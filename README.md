@@ -1,6 +1,6 @@
 # Calculadora Web (Python Flask HTML e JavaScript)
 
-Este projeto é um exemplo didático de como usar **Python + Flask + HTML + JavaScript** para criar uma calculadora simples com páginas de **Soma** e **Subtração**.
+Este projeto é um exemplo didático de como usar **Python + Flask + HTML + JavaScript** para criar uma calculadora simples com páginas de **Soma**, **Subtração**, **Multiplicação** e **Divisão**.
 
 ---
 
@@ -24,10 +24,29 @@ projeto_calculadora_web/
 ├── templates/          # Páginas HTML
 │   ├── index.html
 │   ├── soma.html
-│   └── subtracao.html
+│   ├── subtracao.html
+│   ├── multiplicacao.html
+│   └── divisao.html
 └── static/             # Arquivos estáticos
-└── script.js
+    └── script.js
 ```
+
+---
+
+## Operações disponíveis
+
+Cada operação tem uma página própria (acessível pelo menu superior) e uma rota de API que recebe os valores em JSON:
+
+| Operação      | Página           | API (método POST)    |
+|---------------|------------------|----------------------|
+| Soma          | `/soma`          | `/api/soma`          |
+| Subtração     | `/subtracao`     | `/api/subtracao`     |
+| Multiplicação | `/multiplicacao` | `/api/multiplicacao` |
+| Divisão       | `/divisao`       | `/api/divisao`       |
+
+Cada API recebe `{"valor1": ..., "valor2": ...}` e responde `{"resultado": ...}`.
+
+Na divisão, se o segundo valor for zero, a resposta é `{"erro": "Não é possível dividir por zero."}` (status 400) e a página exibe essa mensagem.
 
 ---
 
