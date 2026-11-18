@@ -47,3 +47,28 @@ function calcularMultiplicacao() {
         document.getElementById("resultado").innerText = "Resultado: " + data.resultado;
     });
 }
+
+function calcularDivisao() {
+    const v1 = document.getElementById("valor1").value;
+    const v2 = document.getElementById("valor2").value;
+
+    if (v1 === "" || v2 === "") {
+        document.getElementById("resultado").innerText = "Informe os dois valores.";
+        return;
+    }
+
+    fetch("/api/divisao", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ valor1: v1, valor2: v2 })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.erro) {
+            // Ex.: divisão por zero
+            document.getElementById("resultado").innerText = "Erro: " + data.erro;
+        } else {
+            document.getElementById("resultado").innerText = "Resultado: " + data.resultado;
+        }
+    });
+}
